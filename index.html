@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Statement</title>
+</head>
+<body>
+
+<div id="navbar"></div>
+<main id="content"></main>
+<div id="footer"></div>
+
+<script>
+// 1. Inject global stylesheet from main site
+const css = document.createElement('link');
+css.rel = 'stylesheet';
+css.href = 'https://maloneuniversity.org/css/mgu.css';
+document.head.appendChild(css);
+
+// 2. Load shared navbar from main site
+fetch('https://maloneuniversity.org/partials/navbar.html')
+  .then(r => r.text())
+  .then(html => document.getElementById('navbar').innerHTML = html);
+
+// 3. Load this page's specific content
+document.getElementById('content').innerHTML = \
+  <h1>Accessibility Statement</h1>
+  <section>
+    <p>Malone Global University is committed to ensuring digital accessibility for people of all abilities...</p>
+  </section>
+  <section>
+    <h2>Our Commitment</h2>
+    <ul>
+      <li>Meeting or exceeding WCAG 2.1 AA guidelines.</li>
+      <li>Providing alternative text for all meaningful images.</li>
+      <li>Ensuring content is readable and navigable via keyboard.</li>
+      <li>Using clear, simple language whenever possible.</li>
+    </ul>
+  </section>
+\;
+
+// 4. Load shared footer from main site
+fetch('https://maloneuniversity.org/partials/footer.html')
+  .then(r => r.text())
+  .then(html => document.getElementById('footer').innerHTML = html);
+</script>
+
+</body>
+</html>
